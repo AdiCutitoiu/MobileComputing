@@ -4,26 +4,6 @@ const cors = require('cors');
 const morgan = require('morgan')
 
 const songs = [
-    /*{
-        title: "Remember the Way",
-        artist: "Ask Again",
-    },
-    {
-        title: "Guardians",
-        artist: "Ask Again"
-    },
-    {
-        title: "Crusade of The Castellan",
-        artist: "Ask Again",
-    },*/
-    {
-        title: "Land of a Folk Divided",
-        artist: "Ask Again",
-    },
-    {
-        title: "An Innocent Sword",
-        artist: "Ask Again",
-    },
     {
         title: "Back in black",
         artist: "AC/DC",
