@@ -1,1 +1,1 @@
-export default 'https://musicmobilecomputing.herokuapp.com';
+export default 'https://musicmobilecomputing.herokuapp.com/';
