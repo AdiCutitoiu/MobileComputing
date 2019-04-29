@@ -24,19 +24,19 @@ const songs = [
         title: "An Innocent Sword",
         artist: "Ask Again",
     },
-	{
+    {
         title: "Back in black",
         artist: "AC/DC",
     },
-	{
+    {
         title: "Highway to Hell",
         artist: "AC/DC",
     },
-	{
+    {
         title: "TNT",
         artist: "AC/DC",
     },
-	{
+    {
         title: "You shook me all night long",
         artist: "AC/DC",
     }
@@ -55,7 +55,7 @@ router.get('/', async (req, res) => {
 router.get('/:name', async (req, res) => {
     try {
         const songName = req.params.name.split(' ').join('_');
-        
+
         const songPath = `${__dirname}/playlist/${songName}.mp3`;
 
         const stream = fs.createReadStream(songPath);
@@ -69,10 +69,14 @@ router.get('/:name', async (req, res) => {
 
 const app = express();
 
+var http = require('http');
+var server = http.Server(app);
+
 app.use(cors());
 app.use(morgan('combined'));
 app.use(router);
 
-app.listen(3000, '0.0.0.0', ()=> {
-    console.log(`Listening on port 3000`);
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, function () {
+    console.log('Server running on');
 });
