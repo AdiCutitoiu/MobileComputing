@@ -32,16 +32,20 @@ router.get('/', async (req, res) => {
     }
 });
 
+const exists = require('util').promisify(fs.exists);
+
 router.get('/:name', async (req, res) => {
     try {
-        const songName = req.params.name.split(' ').join('_');
+        const songPath = `${__dirname}/playlist/${req.params.name}.mp3`;
 
-        const songPath = `${__dirname}/playlist/${songName}.mp3`;
+        if (await exists(songPath)) {
 
-        const stream = fs.createReadStream(songPath);
+            const stream = fs.createReadStream(songPath);
 
-        stream.pipe(res);
-
+            return stream.pipe(res);
+        }
+        
+        res.status(404).end();
     } catch (error) {
         console.error(error);
     }
@@ -58,5 +62,5 @@ app.use(router);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, function () {
-    console.log('Server running on');
+    console.log(`Server running on ${PORT}`);
 });
