@@ -42,6 +42,7 @@ router.get('/:name', async (req, res) => {
 
             const stream = fs.createReadStream(songPath);
 
+            stream.on('end', () => res.end());
             return stream.pipe(res);
         }
         
