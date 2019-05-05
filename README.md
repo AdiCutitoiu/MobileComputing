@@ -1,6 +1,6 @@
 Android API level required: 26  
 
-To run the app:
+To emulate the app, open a cmd in the root folder and copy-paste the commands:
 
 ```
 cd music
