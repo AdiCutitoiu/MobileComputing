@@ -39,8 +39,6 @@ router.get('/:name', async (req, res) => {
         const songPath = `${__dirname}/playlist/${req.params.name}.mp3`;
 
         if (await exists(songPath)) {
-
-            const stream = fs.createReadStream(songPath);
             return res.sendFile(songPath);
         }
         
