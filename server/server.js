@@ -41,9 +41,7 @@ router.get('/:name', async (req, res) => {
         if (await exists(songPath)) {
 
             const stream = fs.createReadStream(songPath);
-
-            stream.on('end', () => res.end());
-            return stream.pipe(res);
+            return res.sendFile(songPath);
         }
         
         res.status(404).end();
